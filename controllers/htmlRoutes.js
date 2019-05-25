@@ -6,10 +6,14 @@ var router = express.Router();
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-var db = require("../models");
+// var db = require("../models");
+
+router.get("/", function (req, res) {
+ res.render("index");
+});
 
 // A GET route for scraping the echoJS website
-app.get("/scrape", function (req, res) {
+router.get("/scrape", function (req, res) {
     // First, we grab the body of the html with axios
     axios.get("http://www.echojs.com/").then(function (response) {
         // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -46,7 +50,7 @@ app.get("/scrape", function (req, res) {
 });
 
 // Route for getting all Articles from the db
-app.get("/articles", function (req, res) {
+router.get("/articles", function (req, res) {
     // TODO: Finish the route so it grabs all of the articles
     db.Article.find({})
         .then(function (dbArticle) {
@@ -58,7 +62,7 @@ app.get("/articles", function (req, res) {
 });
 
 // Route for grabbing a specific Article by id, populate it with it's note
-app.get("/articles/:id", function (req, res) {
+router.get("/articles/:id", function (req, res) {
     // TODO
     // ====
     // Finish the route so it finds one article using the req.params.id,

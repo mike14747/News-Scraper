@@ -6,10 +6,10 @@ var router = express.Router();
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-var db = require("../models");
+// var db = require("../models");
 
 // Route for saving/updating an Article's associated Note
-app.post("/articles/:id", function (req, res) {
+router.post("/articles/:id", function (req, res) {
     // TODO
     // ====
     // save the new note that gets posted to the Notes collection
