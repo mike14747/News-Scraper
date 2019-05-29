@@ -20,32 +20,56 @@
         crossorigin="anonymous"></script>
 
     <!-- CDNs for fontawesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css"
-        integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css"
-        integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <!-- my css -->
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- my javascript -->
-    <script src="process.js"></script>
+    <script src="/js/main.js"></script>
 
     <title>News Scraper</title>
 </head>
 
-<body class="bg-secondary">
+<body class="bg-orange">
 
-    <div class="container bg-white border rounded my-1">
-        <header class="row bg-light border-bottom">
+    <div class="container bg-white border border-secondary rounded">
+        <header class="row bg-ltgreen border-bottom header_bg">
             <div class="col-12 align-self-center">
-                <h1>Test header for news scaper</h1>
-                {{!-- <img src="vb_icon3.png" alt="Eat-Da-Veggie-Burger!" class="float-right p-2" width="150px" height="auto">
-                <h1 class="p-2">Eat-Da-Veggie-Burger!</h1>
-                <h5 class="px-2 text-secondary"><span class="small">Where nobody asks:</span> "Where's the Beef?"</h5> --}}
+                <h2 class="px-2 py-4">Scrape the latest Baseball news...</h2>
             </div>
         </header>
+        <nav class="row nav_bg navbar navbar-expand-lg navbar-light px-0">
+            <button class="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item m-2">
+                        <a class="nav-link text-link" href="/"><i class="fas fa-home mx-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item m-2">
+                        <a class="nav-link text-link" href="/articles"><i class="fas fa-save mx-1"></i>Saved Articles</a>
+                    </li>
+                    <li class="nav-item m-2">
+                        <a class="btn btn-scrape" href="/scrape/baseballamerica"><i class="fas fa-download mr-1"></i>Scrape Baseball America</a>
+                    </li>
+                    <li class="nav-item m-2">
+                        <a class="btn btn-scrape" href="/scrape/fangraphs"><i class="fas fa-download mr-1"></i>Scrape Fangraphs</a>
+                    </li>
+                    <li class="nav-item m-2">
+                        <a class="btn btn-scrape" href="/scrape/mlb"><i class="fas fa-download mr-1"></i>Scrape MLB</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-        {{{ body }}}
+        <div class="my-4">
+            {{{ body }}}
+        </div>
 
-        <div class="row bg-light">
+        <div class="row bg-ltgreen">
             <footer class="col-12 border-top p-2 d-flex align-items-center justify-content-center">
                 <span class="small">Copyright &#169; 2019 mike14747</span>
             </footer>

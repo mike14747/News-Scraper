@@ -1,0 +1,28 @@
+<div id="add_note_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="add_note_modal_label"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-ltgreen">
+                <h5 id="add_note_modal_label" class="modal-title">Add a note to this article!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="article_title" class="bg-orange p-2 my-2"></div>
+                <div id="article_link" class="small my-2"></div>
+                <div id="article_source" class="small my-2"></div>
+            </div>
+            <div class="border-top p-4 text-right">
+                <form>
+                    <div class="form-group text-left">
+                        <label for="note_text">Enter note text:</label>
+                        <textarea id="note_text" class="form-control" rows="3"></textarea>
+                    </div>
+                    <input id="article_id" type="hidden">
+                    <button id="submit_note" type="submit" class="btn btn-note">Add Note</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

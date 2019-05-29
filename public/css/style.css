@@ -1,0 +1,104 @@
+.text-blue {
+    color: #465b86;
+}
+
+.bg-blue {
+    background-color: #465b86;
+}
+
+.text-dkgreen {
+    color: #3c8e84;
+}
+
+.bg-dkgreen {
+    background-color: #3c8e84;
+}
+
+.text-ltgreen {
+    color: #85ba97;
+}
+
+.bg-ltgreen {
+    background-color: #85ba97;
+}
+
+.text-orange {
+    color: #ddbb7e;
+}
+
+.bg-orange {
+    background-color: #ddbb7e;
+}
+
+.text-pale {
+    color: #fbfbf9;
+}
+
+.bg-pale {
+    background-color: #fbfbf9;
+}
+
+.btn-scrape {
+    color: #fff;
+    background-color: #465b86;
+    border-color: #000000;
+}
+  
+.btn-scrape:hover {
+    color: #fff;
+    background-color: #3c8e84;
+    border-color: #000000;
+}
+
+.btn-note {
+    color: #333333;
+    background-color: #85ba97;
+    border-color: #000000;
+}
+  
+.btn-note:hover {
+    color: #fbfbf9;
+    background-color: #3c8e84;
+    border-color: #000000;
+}
+
+.btn-delete {
+    color: #333333;
+    background-color: #ddbb7e;
+    border-color: #000000;
+}
+  
+.btn-delete:hover {
+    color: #fbfbf9;
+    background-color: #b84551;
+    border-color: #000000;
+}
+
+.text-link {
+    color: #465b86 !important;
+}
+  
+.text-link:hover {
+    color: #465b86 !important;
+    background-color: #fbfbf9;
+}
+
+button {
+    border-width: 1px !important;
+}
+
+.nav_bg {
+    background-image: url("../images/header_bg.jpg");
+}
+
+.container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 575.98px) {
+    .container {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+  }

@@ -3,6 +3,9 @@ var app = express();
 
 var mongoose = require("mongoose");
 
+var moment = require("moment");
+var helpers = require('handlebars-helpers')();
+
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -13,9 +16,8 @@ app.use(express.static("public"));
 
 var PORT = process.env.PORT || 3000;
 
-// mongoose.connect('mongodb://localhost/mongoHeadlines', { useNewUrlParser: true });
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, function (error) {
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoBaseballNews";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }, function (error) {
     if (error) {
         console.log(error);
     } else {

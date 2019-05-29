@@ -6,72 +6,101 @@ var router = express.Router();
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-// var db = require("../models");
+var db = require("../models/index.js");
 
 router.get("/", function (req, res) {
- res.render("index");
+    res.render("index");
 });
 
-// A GET route for scraping the echoJS website
-router.get("/scrape", function (req, res) {
+// route to scrape articles from baseball america and add them to the db
+router.get("/scrape/baseballamerica", function (req, res) {
     // First, we grab the body of the html with axios
-    axios.get("http://www.echojs.com/").then(function (response) {
-        // Then, we load that into cheerio and save it to $ for a shorthand selector
+    axios.get("https://www.baseballamerica.com/").then(function (response) {
         var $ = cheerio.load(response.data);
-
-        // Now, we grab every h2 within an article tag, and do the following:
-        $("article h2").each(function (i, element) {
-            // Save an empty result object
-            var result = {};
-
-            // Add the text and href of every link, and save them as properties of the result object
-            result.title = $(this)
-                .children("a")
-                .text();
-            result.link = $(this)
-                .children("a")
-                .attr("href");
-
-            // Create a new Article using the `result` object built from scraping
-            db.Article.create(result)
-                .then(function (dbArticle) {
-                    // View the added result in the console
-                    console.log(dbArticle);
-                })
-                .catch(function (err) {
-                    // If an error occurred, log it
-                    console.log(err);
-                });
+        var results = [];
+        $("li.headline").each(function (i, element) {
+            var title = $(element).children().text();
+            var link = $(element).find("a").attr("href");
+            if (!link.startsWith("http")) {
+                link = "https://www.baseballamerica.com" + link
+            }
+            var website = "Baseball America";
+            results.push({
+                title: title,
+                link: link,
+                website: website
+            });
         });
-
-        // Send a message to the client
-        res.send("Scrape Complete");
+        db.Article.create(results)
+            .then(function (dbArticle) {
+                console.log(dbArticle);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+        res.json(results);
     });
 });
 
-// Route for getting all Articles from the db
-router.get("/articles", function (req, res) {
-    // TODO: Finish the route so it grabs all of the articles
-    db.Article.find({})
-        .then(function (dbArticle) {
-            res.json(dbArticle);
-        })
-        .catch(function (err) {
-            res.json(err);
+router.get("/scrape/fangraphs", function (req, res) {
+    // First, we grab the body of the html with axios
+    axios.get("https://www.fangraphs.com/").then(function (response) {
+        var $ = cheerio.load(response.data);
+        var results = [];
+        $("div.intro-headline-title").each(function (i, element) {
+            var title = $(element).children().text();
+            var link = $(element).find("a").attr("href");
+            var website = "Fangraphs";
+            results.push({
+                title: title,
+                link: link,
+                website: website
+            });
         });
+        db.Article.create(results)
+            .then(function (dbArticle) {
+                console.log(dbArticle);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+        res.json(results);
+    });
 });
 
-// Route for grabbing a specific Article by id, populate it with it's note
-router.get("/articles/:id", function (req, res) {
-    // TODO
-    // ====
-    // Finish the route so it finds one article using the req.params.id,
-    // and run the populate method with "note",
-    // then responds with the article with the note included
-    db.Article.findOne({ _id: req.params.id })
+router.get("/scrape/mlb", function (req, res) {
+    // First, we grab the body of the html with axios
+    axios.get("https://www.mlb.com/").then(function (response) {
+        var $ = cheerio.load(response.data);
+
+        var results = [];
+        $("div.l-grid__content--lg-hidden li.p-headline-stack__headline").each(function (i, element) {
+            var title = $(element).text();
+            var link = $(element).find("a").attr("href");
+            var website = "MLB";
+            results.push({
+                title: title,
+                link: link,
+                website: website
+            });
+        });
+        db.Article.create(results)
+            .then(function (dbArticle) {
+                console.log(dbArticle);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+        res.json(results);
+    });
+});
+
+router.get("/articles", function (req, res) {
+    db.Article.find({})
         .populate("note")
         .then(function (dbArticle) {
-            res.json(dbArticle);
+            // res.json(dbArticle);
+            res.render("articles", { dbArticle });
         })
         .catch(function (err) {
             res.json(err);
