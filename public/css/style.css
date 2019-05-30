@@ -91,6 +91,10 @@ button {
     background-image: url("../images/header_bg.jpg");
 }
 
+.header_bg {
+    background-image: url("../images/baseball-grass.jpg");
+}
+
 .container {
     margin-top: 1rem;
     margin-bottom: 1rem;

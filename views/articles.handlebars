@@ -1,5 +1,10 @@
 {{> add_note_modal}}
 
+{{#unless dbArticle}}
+<h3 class="text-center m-4 text-dkgreen">You have no saved articles!</h3>
+<h5 class="text-center m-4">Try saving some articles using the 'Scrape' buttons on the navigation bar above.</h5>
+{{/unless}}
+
 {{#each dbArticle}}
 <div class="border m-4">
     <h5 class="bg-dkgreen text-pale p-2"><i class="far fa-newspaper mr-2"></i>{{ title }}</h5>

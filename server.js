@@ -17,7 +17,7 @@ app.use(express.static("public"));
 var PORT = process.env.PORT || 3000;
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoBaseballNews";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }, function (error) {
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }, error => {
     if (error) {
         console.log(error);
     } else {
@@ -31,6 +31,6 @@ app.use(apiRoutes);
 var htmlRoutes = require("./controllers/htmlRoutes.js");
 app.use(htmlRoutes);
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
     console.log("App listening on PORT " + PORT + ".");
 });
