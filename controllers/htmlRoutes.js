@@ -99,8 +99,17 @@ router.get("/articles", function (req, res) {
     db.Article.find({})
         .populate("note")
         .then(function (dbArticle) {
-            // res.json(dbArticle);
             res.render("articles", { dbArticle });
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+});
+
+router.get("/article/:id", function (req, res) {
+    db.Article.findOne({ _id: req.params.id })
+        .then(function (dbArticle) {
+            res.json(dbArticle);
         })
         .catch(function (err) {
             res.json(err);

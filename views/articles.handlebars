@@ -14,14 +14,14 @@
             {{#if note}}
             <div class="p-4">
                 <form>
-                <div class="form-group text-left">
-                    <label for="note_text" class="bg-ltgreen d-block p-2">This article's note:</label>
-                    <textarea id="note_text" class="form-control" rows="3">{{note.text}}</textarea>
-                </div>
-                <input id="note_id" type="hidden" value="{{note._id}}">
-                <button id="submit_note" type="submit" class="btn-sm btn-note">Update Note</button>
-                <button id="delete_note" type="submit" class="btn-sm btn-delete">Delete Note</button>
-            </form>
+                    <div class="form-group text-left">
+                        <label for="note_text" class="bg-ltgreen d-block p-2">This article's note:</label>
+                        <textarea name="note_text" class="form-control" rows="3">{{note.text}}</textarea>
+                    </div>
+                    <input name="note_id" type="hidden" value="{{note._id}}">
+                    <button type="submit" class="btn-sm btn-note update_note">Update Note</button>
+                    <button type="submit" class="btn-sm btn-delete delete_note">Delete Note</button>
+                </form>
             </div>
             {{/if}}
         </div>

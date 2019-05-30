@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $(".add_note").on("click", function (event) {
         event.preventDefault();
-        $.get("/articles/" + $(this).val(), function (data) {
+        $.get("/article/" + $(this).val(), function (data) {
             $("#article_title").html("<i class='far fa-newspaper mr-2'></i>" + data.title);
             $("#article_link").html("<a href='" + data.link + "' target='_blank'>" + data.link + "</a>");
             $("#article_source").text(data.website);
@@ -16,9 +16,9 @@ $(document).ready(function () {
     $(".delete_article").on("click", function (event) {
         event.preventDefault();
         var deleteItem = {
-            id: $(this).val()
+            article_id: $(this).val()
         };
-        $.ajax('/api/articles/delete', {
+        $.ajax('/api/article/delete', {
             type: 'DELETE',
             data: deleteItem
         }).then(function (response) {
@@ -43,10 +43,24 @@ $(document).ready(function () {
             });
     });
 
-    $("#delete_note").on("click", function (event) {
+    $(".update_note").on("click", function (event) {
+        event.preventDefault();
+        var note_info = {
+            text: $("form textarea[name=note_text]").val().trim(),
+            note_id: $("form input[name=note_id]").val()
+        }
+        $.ajax('/api/note/update', {
+            type: 'PUT',
+            data: note_info
+        }).then(function (response) {
+            $(location).attr('href', '/articles');
+        });
+    });
+
+    $(".delete_note").on("click", function (event) {
         event.preventDefault();
         var deleteNote = {
-            note_id: $("#note_id").val()
+            note_id: $("form input[name=note_id]").val()
         };
         $.ajax('/api/note/delete', {
             type: 'DELETE',
