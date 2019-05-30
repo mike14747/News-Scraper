@@ -1,3 +1,8 @@
+body {
+    background-image: url("../images/baseball_large.jpg");
+    background-size: cover;
+}
+
 .text-blue {
     color: #465b86;
 }
@@ -88,11 +93,12 @@ button {
 }
 
 .nav_bg {
-    background-image: url("../images/header_bg.jpg");
+    background-image: url("../images/baseball_field_gray.jpg");
 }
 
-.header_bg {
+.grass_bg {
     background-image: url("../images/baseball-grass.jpg");
+    background-size: cover;
 }
 
 .container {

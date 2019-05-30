@@ -1,5 +1,14 @@
 {{> add_note_modal}}
 
+{{#if dbArticle}}
+<div class="text-right">
+    <button type="submit" class="btn-lg btn-delete delete_articles m-2"><i
+                        class="far fa-trash-alt mr-2"></i>Delete All
+            Articles</button>
+</div>
+
+{{/if}}
+
 {{#unless dbArticle}}
 <h3 class="text-center m-4 text-dkgreen">You have no saved articles!</h3>
 <h5 class="text-center m-4">Try saving some articles using the 'Scrape' buttons on the navigation bar above.</h5>

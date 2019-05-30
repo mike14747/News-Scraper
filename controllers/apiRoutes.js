@@ -29,4 +29,10 @@ router.delete("/api/article/delete", (req, res) => {
         .then(dbNote => res.send("success"));
 });
 
+router.delete("/api/articles/delete", (req, res) => {
+    db.Article.deleteMany({})
+        .then(dbArticle => db.Note.deleteMany({}))
+        .then(dbNote => res.send("success"));
+});
+
 module.exports = router;

@@ -13,6 +13,7 @@ $(document).ready(function () {
         $("#add_note_modal").modal("show");
     });
 
+    // delete a single article
     $(".delete_article").on("click", function(event) {
         event.preventDefault();
         var deleteItem = {
@@ -21,6 +22,14 @@ $(document).ready(function () {
         $.ajax('/api/article/delete', {
             type: 'DELETE',
             data: deleteItem
+        }).then(response => $(location).attr('href', '/articles'));
+    });
+
+    // delete all articles
+    $(".delete_articles").on("click", event => {
+        event.preventDefault();
+        $.ajax('/api/articles/delete', {
+            type: 'DELETE'
         }).then(response => $(location).attr('href', '/articles'));
     });
 
