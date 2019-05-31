@@ -3,7 +3,6 @@ var app = express();
 
 var mongoose = require("mongoose");
 
-var moment = require("moment");
 var helpers = require('handlebars-helpers')();
 
 var exphbs = require("express-handlebars");
