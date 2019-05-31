@@ -3,7 +3,7 @@
 var express = require("express");
 var router = express.Router();
 
-var db = require("../models");
+var db = require("../models/index");
 
 router.post("/api/note", (req, res) => {
     db.Note.create(req.body)

@@ -6,7 +6,7 @@ var router = express.Router();
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-var db = require("../models");
+var db = require("../models/index");
 
 router.get("/", (req, res) => res.render("index"));
 
