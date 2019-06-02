@@ -14,8 +14,8 @@ To use this project, you'll need to do the following:
 * Clone this repository onto your computer or upload it to heroku.
 * If you're running it locally on your pc, also perform these steps:
     * Install Mongo DB.
-    * Run 'npm i' from the terminal (this will install the npm modules: express, express-handlebars, handlebars-helpers, axios, cheerio and mongoose).
-    * Run 'node server' from the terminal, then browse to 'localhost:3000'.
+    * Run **npm i** from the terminal (this will install the npm modules: express, express-handlebars, handlebars-helpers, axios, cheerio and mongoose).
+    * Run ***node server** from the terminal, then browse to **localhost:3000**.
 * If you're deploying it to Heroku, also perform these steps:
     * Create the Heroku app in the terminal.
     * Run: 'heroku addons:create mongolab' from the terminal to setup Mongo DB for this app.
@@ -23,7 +23,7 @@ To use this project, you'll need to do the following:
 
 ## About the code in this project:
 
-This is the code I used to add a note to an article. First, it add a note to the 'notes' collection. Then, it takes the returned note id and adds it to the associated article in the 'articles' collection (the MongoDB equivalent of a foreign key).
+This is the code I used to add a note to an article. First, it add a note to the **notes** collection. Then, it takes the returned note id and adds it to the associated article in the **articles** collection (the MongoDB equivalent of a foreign key).
 ```
 router.post("/api/note", (req, res) => {
     db.Note.create(req.body)
@@ -58,7 +58,7 @@ $(".update_note").on("click", event => {
 ```
 <br />
 
-The npm module 'handlebars-helpers was used to add MomentJS date formatting on the saved articles page. Just having that package installed and required in server.js allowed me to include moment right in the articles.handlebars file.
+The npm module **handlebars-helpers** was used to add MomentJS date formatting on the saved articles page. Just having that package installed and required in server.js allowed me to include moment right in the articles.handlebars file.
 ```
 <div class="p-2 text-dkgreen"><span class="small muted">Source:</span> {{ website }} / <span class="small muted">Date Scraped:</span> {{ moment date format="MMM DD, YYYY" }}</div>
 ```
