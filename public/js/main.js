@@ -5,8 +5,8 @@ $(document).ready(function () {
     $(".add_note").on("click", function(event) {
         event.preventDefault();
         $.get("/article/" + $(this).val(), data => {
-            $("#article_title").html("<i class='far fa-newspaper mr-2'></i>" + data.title);
-            $("#article_link").html("<a href='" + data.link + "' target='_blank'>" + data.link + "</a>");
+            $("#article_title").html(`<i class='far fa-newspaper mr-2'></i>${data.title}`);
+            $("#article_link").html(`<a href='${data.link}' target='_blank'>${data.link}</a>`);
             $("#article_source").text(data.website);
         });
         $("#article_id").attr("value", $(this).val());
@@ -43,7 +43,7 @@ $(document).ready(function () {
         $.post("/api/note", note_info)
             .then(response => {
                 if (response === "error") {
-                    console.log(error);
+                    console.log("error");
                 } else {
                     $(location).attr('href', '/articles');
                 }
