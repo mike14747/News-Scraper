@@ -62,6 +62,38 @@ The npm module **handlebars-helpers** was used to add MomentJS date formatting o
 ```
 <div class="p-2 text-dkgreen"><span class="small muted">Source:</span> {{ website }} / <span class="small muted">Date Scraped:</span> {{ moment date format="MMM DD, YYYY" }}</div>
 ```
+<br />
+
+In one of the 3 baseball websites I'm scraping headlines from (baseballamerica.com), I noticed that some of the headlines used relative paths and some used absolute paths. So, I had to add a condition that checks for it before sending the url of the article to the database... and prepending it with the path necessary to make it simulate an absolute path if needed.
+```
+router.get("/scrape/baseballamerica", (req, res) => {
+    let counter = 0;
+    axios.get("https://www.baseballamerica.com/").then(response => {
+        var $ = cheerio.load(response.data);
+        var results = [];
+        $("li.headline").each(function (i, element) {
+            var title = $(element).children().text();
+            var link = $(element).find("a").attr("href");
+            if (!link.startsWith("http")) {
+                link = "https://www.baseballamerica.com" + link
+            }
+            var website = "Baseball America";
+            counter++;
+            if (counter < 10) {
+                results.push({
+                    title: title,
+                    link: link,
+                    website: website
+                });
+            }
+        });
+        db.Article.create(results)
+            .then(dbArticle => console.log(dbArticle))
+            .catch(err => console.log(err));
+        res.redirect("/articles");
+    });
+});
+```
 
 ---
 
