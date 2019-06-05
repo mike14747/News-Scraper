@@ -11,7 +11,6 @@ const db = require("../models/index.js");
 router.get("/", (req, res) => res.render("index"));
 
 router.get("/scrape/baseballamerica", (req, res) => {
-    let counter = 0;
     axios.get("https://www.baseballamerica.com/").then(response => {
         const $ = cheerio.load(response.data);
         const results = [];
@@ -22,13 +21,13 @@ router.get("/scrape/baseballamerica", (req, res) => {
                 link = `https://www.baseballamerica.com${link}`;
             }
             const website = "Baseball America";
-            counter++;
-            if (counter < 10) {
-                results.push({
-                    title: title,
-                    link: link,
-                    website: website
-                });
+            results.push({
+                title: title,
+                link: link,
+                website: website
+            });
+            if (i === 9) {
+                return false;
             }
         });
         db.Article.create(results)
@@ -39,7 +38,6 @@ router.get("/scrape/baseballamerica", (req, res) => {
 });
 
 router.get("/scrape/fangraphs", (req, res) => {
-    let counter = 0;
     axios.get("https://www.fangraphs.com/").then(response => {
         const $ = cheerio.load(response.data);
         const results = [];
@@ -47,13 +45,13 @@ router.get("/scrape/fangraphs", (req, res) => {
             const title = $(element).children().text();
             const link = $(element).find("a").attr("href");
             const website = "Fangraphs";
-            counter++;
-            if (counter < 10) {
-                results.push({
-                    title: title,
-                    link: link,
-                    website: website
-                });
+            results.push({
+                title: title,
+                link: link,
+                website: website
+            });
+            if (i === 9) {
+                return false;
             }
         });
         db.Article.create(results)
@@ -64,7 +62,6 @@ router.get("/scrape/fangraphs", (req, res) => {
 });
 
 router.get("/scrape/mlb", (req, res) => {
-    let counter = 0;
     axios.get("https://www.mlb.com/").then(response => {
         const $ = cheerio.load(response.data);
         const results = [];
@@ -72,13 +69,13 @@ router.get("/scrape/mlb", (req, res) => {
             const title = $(element).text();
             const link = $(element).find("a").attr("href");
             const website = "MLB";
-            counter++;
-            if (counter < 10) {
-                results.push({
-                    title: title,
-                    link: link,
-                    website: website
-                });
+            results.push({
+                title: title,
+                link: link,
+                website: website
+            });
+            if (i === 9) {
+                return false;
             }
         });
         db.Article.create(results)
