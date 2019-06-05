@@ -1,27 +1,27 @@
 "use strict";
 
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-var axios = require("axios");
-var cheerio = require("cheerio");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
-var db = require("../models/index.js");
+const db = require("../models/index.js");
 
 router.get("/", (req, res) => res.render("index"));
 
 router.get("/scrape/baseballamerica", (req, res) => {
     let counter = 0;
     axios.get("https://www.baseballamerica.com/").then(response => {
-        var $ = cheerio.load(response.data);
-        var results = [];
+        const $ = cheerio.load(response.data);
+        const results = [];
         $("li.headline").each(function (i, element) {
-            var title = $(element).children().text();
-            var link = $(element).find("a").attr("href");
+            const title = $(element).children().text();
+            let link = $(element).find("a").attr("href");
             if (!link.startsWith("http")) {
-                link = "https://www.baseballamerica.com" + link
+                link = `https://www.baseballamerica.com${link}`;
             }
-            var website = "Baseball America";
+            const website = "Baseball America";
             counter++;
             if (counter < 10) {
                 results.push({
@@ -41,12 +41,12 @@ router.get("/scrape/baseballamerica", (req, res) => {
 router.get("/scrape/fangraphs", (req, res) => {
     let counter = 0;
     axios.get("https://www.fangraphs.com/").then(response => {
-        var $ = cheerio.load(response.data);
-        var results = [];
+        const $ = cheerio.load(response.data);
+        const results = [];
         $("div.intro-headline-title").each((i, element) => {
-            var title = $(element).children().text();
-            var link = $(element).find("a").attr("href");
-            var website = "Fangraphs";
+            const title = $(element).children().text();
+            const link = $(element).find("a").attr("href");
+            const website = "Fangraphs";
             counter++;
             if (counter < 10) {
                 results.push({
@@ -66,12 +66,12 @@ router.get("/scrape/fangraphs", (req, res) => {
 router.get("/scrape/mlb", (req, res) => {
     let counter = 0;
     axios.get("https://www.mlb.com/").then(response => {
-        var $ = cheerio.load(response.data);
-        var results = [];
+        const $ = cheerio.load(response.data);
+        const results = [];
         $("div.l-grid__content--lg-hidden li.p-headline-stack__headline").each((i, element) => {
-            var title = $(element).text();
-            var link = $(element).find("a").attr("href");
-            var website = "MLB";
+            const title = $(element).text();
+            const link = $(element).find("a").attr("href");
+            const website = "MLB";
             counter++;
             if (counter < 10) {
                 results.push({

@@ -1,9 +1,9 @@
 "use strict";
 
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 mongoose.set('useCreateIndex', true);
 
-var schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -26,6 +26,6 @@ var schema = new mongoose.Schema({
         ref: "Note"
     }
 });
-var Article = mongoose.model('Article', schema);
+const Article = mongoose.model('Article', schema);
 
 module.exports = Article;

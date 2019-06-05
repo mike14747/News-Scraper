@@ -1,9 +1,9 @@
 "use strict";
 
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-var db = require("../models/index.js");
+const db = require("../models/index.js");
 
 router.post("/api/note", (req, res) => {
     db.Note.create(req.body)

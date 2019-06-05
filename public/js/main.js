@@ -16,7 +16,7 @@ $(document).ready(function () {
     // delete a single article
     $(".delete_article").on("click", function(event) {
         event.preventDefault();
-        var deleteItem = {
+        const deleteItem = {
             article_id: $(this).val()
         };
         $.ajax('/api/article/delete', {
@@ -36,7 +36,7 @@ $(document).ready(function () {
     $("#submit_note").on("click", event => {
         event.preventDefault();
         $("#add_note_modal").modal("hide");
-        var note_info = {
+        const note_info = {
             text: $("#note_text").val().trim(),
             article_id: $("#article_id").val()
         }
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
     $(".update_note").on("click", event => {
         event.preventDefault();
-        var note_info = {
+        const note_info = {
             text: $("form textarea[name=note_text]").val().trim(),
             note_id: $("form input[name=note_id]").val()
         }
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
     $(".delete_note").on("click", event => {
         event.preventDefault();
-        var deleteNote = {
+        const deleteNote = {
             note_id: $("form input[name=note_id]").val()
         };
         $.ajax('/api/note/delete', {
