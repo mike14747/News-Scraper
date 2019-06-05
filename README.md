@@ -46,7 +46,7 @@ Since there are going to be multiple notes that can be updated on the articles p
 ```
 $(".update_note").on("click", event => {
     event.preventDefault();
-    var note_info = {
+    const note_info = {
         text: $("form textarea[name=note_text]").val().trim(),
         note_id: $("form input[name=note_id]").val()
     }
@@ -69,15 +69,15 @@ In one of the 3 baseball websites I'm scraping headlines from (baseballamerica.c
 router.get("/scrape/baseballamerica", (req, res) => {
     let counter = 0;
     axios.get("https://www.baseballamerica.com/").then(response => {
-        var $ = cheerio.load(response.data);
-        var results = [];
+        const $ = cheerio.load(response.data);
+        const results = [];
         $("li.headline").each(function (i, element) {
-            var title = $(element).children().text();
-            var link = $(element).find("a").attr("href");
+            const title = $(element).children().text();
+            let link = $(element).find("a").attr("href");
             if (!link.startsWith("http")) {
-                link = "https://www.baseballamerica.com" + link
+                link = `https://www.baseballamerica.com${link}`;
             }
-            var website = "Baseball America";
+            const website = "Baseball America";
             counter++;
             if (counter < 10) {
                 results.push({
@@ -94,6 +94,12 @@ router.get("/scrape/baseballamerica", (req, res) => {
     });
 });
 ```
+<br />
+
+This app is using all ES6 approved code.
+* Arrow functions (when possible)
+* const and let (with no use of var)
+* Template literals to concatenate strings
 
 ---
 
