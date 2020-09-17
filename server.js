@@ -16,7 +16,7 @@ app.use(express.static("public"));
 const PORT = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoBaseballNews";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }, error => {
+mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }, error => {
     if (error) {
         console.log(error);
     } else {

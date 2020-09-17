@@ -88,7 +88,7 @@ router.get("/scrape/mlb", (req, res) => {
 router.get("/articles", (req, res) => {
     db.Article.find({}).sort({ "date": -1 })
         .populate("note")
-        .then(dbArticle => res.render("articles", { dbArticle }))
+        .then(dbArticle => res.render("articles", { dbArticle: dbArticle.map(article => article.toJSON()) }))
         .catch(err => res.json(err));
 });
 
