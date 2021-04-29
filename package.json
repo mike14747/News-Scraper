@@ -1,29 +1,29 @@
 {
-  "name": "News-Scrape",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mike14747/News-Scrape.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mike14747/News-Scrape/issues"
-  },
-  "homepage": "https://github.com/mike14747/News-Scrape#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.3",
-    "express": "^4.17.0",
-    "express-handlebars": "^3.1.0",
-    "handlebars-helpers": "^0.10.0",
-    "mongoose": "^5.10.5"
-  }
+    "name": "News-Scrape",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mike14747/News-Scrape.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mike14747/News-Scrape/issues"
+    },
+    "homepage": "https://github.com/mike14747/News-Scrape#readme",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "cheerio": "^1.0.0-rc.3",
+        "express": "^4.17.0",
+        "express-handlebars": "^3.1.0",
+        "handlebars-helpers": "^0.10.0",
+        "mongoose": "^5.10.5"
+    }
 }
